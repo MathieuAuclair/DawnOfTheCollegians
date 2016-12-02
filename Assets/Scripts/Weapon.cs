@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Arme : MonoBehaviour {
+public class Weapon : MonoBehaviour {
 
-    protected string nom;
-    protected int durabilite;
-    protected float degatBase;
-    protected float vitesseAtt;
+    protected int durability;
+    protected float baseDamage;
+    protected float speedAtt;
 
 
     void Update()
@@ -21,7 +20,7 @@ public class Arme : MonoBehaviour {
             foreach (GameObject monster in monsters)
             {
                 //call the hit here
-                monster.GetComponent<>();
+                //monster.GetComponent<>();
             }
         }
     }
