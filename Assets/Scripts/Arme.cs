@@ -21,7 +21,7 @@ public class Arme : MonoBehaviour {
             foreach (GameObject monster in monsters)
             {
                 //call the hit here
-                monster.GetComponent<>();
+                //monster.GetComponent<>();
             }
         }
     }
