@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Item : MonoBehaviour {
+public class Item {
 
     protected string name;
 
-    void update()
-    {
 
+    public string getName()
+    {
+        return this.name;
     }
+
+
 }

@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Weapon : MonoBehaviour {
+public class Weapon : Item {
 
     protected int durability;
     protected float baseDamage;
     protected float speedAtt;
-
 
     void Update()
     {

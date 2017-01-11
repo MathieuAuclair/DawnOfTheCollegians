@@ -4,22 +4,24 @@ using System.Collections;
 public class PickableObject : MonoBehaviour {
 
     public int distToPick = 5;
-
+    public ItemName name;
+        
 	// Update is called once per frame
 	void FixedUpdate () {
 
-
-        if( Input.GetButton("e"))
+        if( Input.GetKey("e"))
         {
             //get the distance between the object and the player 
-            Vector3 playerPos = GameObject.Find("player").transform.position;
-            float dist =Mathf.Sqrt( Mathf.Pow(Mathf.Abs(this.transform.position.x - playerPos.x), 2) + Mathf.Pow(Mathf.Abs(this.transform.position.y - playerPos.y), 2) );
+            GameObject player = GameObject.Find("Player");
+            Vector3 playerPos = player.transform.position;
+            float dist = Mathf.Sqrt( Mathf.Pow(Mathf.Abs(this.transform.position.x - playerPos.x), 2) + Mathf.Pow(Mathf.Abs(this.transform.position.y - playerPos.y), 2) );
 
+            Debug.Log(dist);
             if( dist < this.distToPick)
             {
-
+                player.GetComponent<Player>().addItem(ItemFactory.createItem(name));
+                Destroy(gameObject);
             }
         }
-               
-     }
+    }
 }
