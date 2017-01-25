@@ -6,7 +6,7 @@ public class Weapon : Item {
     protected int durability;
     protected float baseDamage;
     protected float speedAtt;
-
+ 
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))

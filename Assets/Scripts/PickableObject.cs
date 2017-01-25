@@ -4,7 +4,7 @@ using System.Collections;
 public class PickableObject : MonoBehaviour {
 
     public int distToPick = 5;
-    public ItemName name;
+    public ItemType type;
         
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -19,7 +19,7 @@ public class PickableObject : MonoBehaviour {
             Debug.Log(dist);
             if( dist < this.distToPick)
             {
-                player.GetComponent<Player>().addItem(ItemFactory.createItem(name));
+                player.GetComponent<Player>().AddItem(ItemFactory.createItem(type));
                 Destroy(gameObject);
             }
         }

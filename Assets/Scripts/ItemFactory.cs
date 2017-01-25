@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ItemName
+public enum ItemType
 {
     Keyboard,
     Screen,
@@ -11,19 +11,19 @@ public enum ItemName
 
 public static class ItemFactory {
 
-    static public Item createItem(ItemName name)
+    static public Item createItem(ItemType type)
     {
         Item newItem = null;
-        switch (name)
+        switch (type)
         {
-            case ItemName.Keyboard:
+            case ItemType.Keyboard:
                 newItem = new KeyboardWeapon();
                 break;
-            case ItemName.Screen:
+            case ItemType.Screen:
                 break;
-            case ItemName.Bat:
+            case ItemType.Bat:
                 break;
-            case ItemName.Basketball:
+            case ItemType.Basketball:
                 break;
         }
 

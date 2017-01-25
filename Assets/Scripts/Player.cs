@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
     public Item[] inventory = new Item[8];
     Weapon activeWeapon = null;
+    Weapon backupWeapon = null;
     public float speed;
     private Rigidbody2D rb;
 
@@ -20,11 +22,11 @@ public class Player : MonoBehaviour {
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
-        rb.AddForce(movement * speed);
-
+        rb.AddForce(movement);
+    //    this.transform.position.x += moveVertical * speed;
+     //   this.transform.position.y += moveVertical * speed;
     }
-    public void addItem(Item newItem)
+    public void AddItem(Item newItem)
     {
         int i = 0;
         bool findSpot = false;
@@ -34,10 +36,36 @@ public class Player : MonoBehaviour {
             {
                 findSpot = true;
                 this.inventory[i] = newItem;
-                Debug.Log(newItem.getName());
+                Debug.Log(newItem.GetName());
+               
+                if(  this.inventory[i] is Weapon)
+                {
+                    if (this.activeWeapon == null)
+                    {
+                        this.activeWeapon = (Weapon)this.inventory[i];
+                        this.UpdateMainWeaponUI();
+                    }
+                    else if (this.backupWeapon == null)
+                    {
+                        this.backupWeapon = (Weapon)this.inventory[i];
+                        this.UpdateBackupWeaponUI();
+                    }                          
+                }
             }
             else
                 i++;
        }
+    }
+
+    void UpdateMainWeaponUI()
+    {
+        GameObject uiImage = GameObject.Find("UIWeapon1");
+        uiImage.GetComponent<ImageHandler>().SetImage( this.activeWeapon.GetType() );
+    }
+
+    void UpdateBackupWeaponUI()
+    {
+        GameObject uiImage = GameObject.Find("UIWeapon2");
+        uiImage.GetComponent<ImageHandler>().SetImage(this.backupWeapon.GetType());
     }
 }
