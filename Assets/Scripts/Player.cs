@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
-    const int MaxHitPoint = 100;
+    const int MaxHitPoint = 10;
     public int hitPoint = MaxHitPoint;
+
     public Item[] inventory = new Item[8];
     Weapon activeWeapon = null;
     Weapon backupWeapon = null;
+
     public float speed;
     private Rigidbody2D rb;
     private Vector3 target; 
@@ -54,6 +56,20 @@ public class Player : MonoBehaviour {
             target.z = transform.position.z;
         }
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+    }
+
+
+    //This function detect collision with an other object if his tag  is Zombie, need a RB2D and a box colision on each ,
+    //note that the player's box colision IsTrigger parametre  must be On
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.tag == "Zombie")
+        {
+            speed = 1;
+        }
+
+
     }
 
     public void AddItem(Item newItem)
