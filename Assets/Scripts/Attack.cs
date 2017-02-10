@@ -6,7 +6,12 @@ using UnityEngine;
 
 class Attack : StateManager
 {
-    public Attack(Mob mobGameObject, GameObject playerGameObject) : base(mobGameObject, playerGameObject) { }
+    private GameObject player;
+
+    public Attack(Mob mobGameObject, GameObject playerGameObject) : base(mobGameObject)
+    {
+        player = playerGameObject;
+    }
     private float x, y, distance;
 
     new void StateUpdate()

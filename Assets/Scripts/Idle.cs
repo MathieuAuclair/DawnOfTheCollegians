@@ -6,7 +6,7 @@ using UnityEngine;
 
 class Idle : StateManager
 {
-    public Idle(Mob mobGameObject, GameObject playerGameObject) : base(mobGameObject, playerGameObject) {}
+    public Idle(Mob mobObject) : base(mobObject) {}
 
 }
 

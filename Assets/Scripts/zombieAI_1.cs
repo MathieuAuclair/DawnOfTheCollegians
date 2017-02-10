@@ -6,9 +6,16 @@
  using UnityEngine;
 
 public class zombieAI_1 : MonoBehaviour {
+
+    [Header("Zombie Speed:")]
+    public float publicSpeed;
+    [Header("Zombie View Range")]
+    public float publicRange;
+
+
     void Start()
     {
-        Mob zombie = new Mob(this.gameObject);
+        Mob zombie = new Mob(this.gameObject, publicSpeed, publicRange);
     }
     void Update()
     {
@@ -22,15 +29,14 @@ public class zombieAI_1 : MonoBehaviour {
 public class Mob {
     private StateManager[] stateList = new StateManager[3];
     public GameObject player;
-    [HideInInspector]
     public GameObject body;
     public float zombieSpeed = 0.01f;
     public float zombieViewRange = 2;
-    public Mob(GameObject mob)
+    public Mob(GameObject mobGameObject, float speed, float range)
     {
-        body = mob;
-        stateList[0] = new Idle(this, player);
-        stateList[1] = new Move(this, player);
+        body = mobGameObject;
+        stateList[0] = new Idle(this);
+        stateList[1] = new Move(this);
         stateList[2] = new Attack(this, player);
     }
 }

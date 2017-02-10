@@ -6,7 +6,7 @@ using UnityEngine;
 
 class Move : StateManager
 {
-    public Move(Mob mobGameObject, GameObject playerGameObject) : base(mobGameObject, playerGameObject) { }
+    public Move(Mob mobObject) : base(mobObject) { }
 
 }
 
