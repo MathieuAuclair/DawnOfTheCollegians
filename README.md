@@ -1,4 +1,6 @@
-Unity-Boilerplate
-=================
+Dawn Of The Collegians
+======================
 
-A boilerplate for any Unity game. It contains an intro screen, an in game menu through and a shortcut for fullscreen mode.
+This is a small school project that we have
+
+### Cégep de Jonquière
