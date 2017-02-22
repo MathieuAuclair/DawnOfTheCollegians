@@ -4,9 +4,23 @@
  */
 using UnityEngine;
 
-class Move : StateManager
+class Move : State
 {
-    public Move(Mob mobObject) : base(mobObject) { }
+    private GameObject mobBody;
+    public Move(Mob mobObject) : base(mobObject) {
+        mobBody = mobObject.body;
+    }
+    private System.Random random = new System.Random();
+    new public void OnEnterState()
+    {
+        x = random.Next(-5, 5); // range of speed in x, and y
+        y = random.Next(-5, 5); //
+    }
 
+    public void StateUpdate()
+    {
+        Debug.Log("move");
+        mobBody.transform.Translate(x, y, 0);
+    }
 }
 

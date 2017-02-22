@@ -7,36 +7,53 @@
 
 public class zombieAI_1 : MonoBehaviour {
 
+    //inspector
     [Header("Zombie Speed:")]
     public float publicSpeed;
     [Header("Zombie View Range")]
     public float publicRange;
+    [Header("Time to change state")]
+    public float publicTimer;
+    [Header("player gameObject")]
+    public GameObject publicPlayer;
 
+    //global
+    Mob zombie;
 
     void Start()
     {
-        Mob zombie = new Mob(this.gameObject, publicSpeed, publicRange);
+        zombie = new Mob(this.gameObject, publicPlayer, publicSpeed, publicRange, publicTimer);
     }
     void Update()
     {
-        
+        zombie.MobUpdate();
     }
-
-
     
 }
 
 public class Mob {
-    private StateManager[] stateList = new StateManager[3];
-    public GameObject player;
-    public GameObject body;
-    public float zombieSpeed = 0.01f;
-    public float zombieViewRange = 2;
-    public Mob(GameObject mobGameObject, float speed, float range)
+    public Mob(GameObject mobGameObject, GameObject playerGameObject, float speed, float range, float timer)
     {
+        mobStateTime = timer; //time between every state
+        mobSpeed = speed;            
+        mobViewRange = range;
         body = mobGameObject;
-        stateList[0] = new Idle(this);
-        stateList[1] = new Move(this);
-        stateList[2] = new Attack(this, player);
+        player = playerGameObject;
+        stateList[0] = new Idle(this);           // Add state to the mob  
+        stateList[1] = new Move(this);           //
+        stateList[2] = new Attack(this);         //
+    }
+
+    public State[] stateList = new State[3];
+    public GameObject player, body;    // gameObject used
+    public int currentState;          // just an index pointer
+    public int oldState;             // container
+    public float mobSpeed, mobViewRange, mobTimer, mobStateTime;
+
+    public void MobUpdate()
+    {
+        stateList[currentState].CheckChanges(); //check for stateChanges
+        stateList[currentState].StateUpdate(); //do the update for state
+        mobTimer += Time.deltaTime;           //add time
     }
 }

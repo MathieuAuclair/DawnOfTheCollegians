@@ -4,9 +4,13 @@
  */
 using UnityEngine;
 
-class Idle : StateManager
+class Idle : State
 {
     public Idle(Mob mobObject) : base(mobObject) {}
 
+    public void StateUpdate()
+    {
+        Debug.Log("Idle");
+    }
 }
 

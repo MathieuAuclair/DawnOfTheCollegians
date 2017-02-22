@@ -4,25 +4,19 @@
  */
 using UnityEngine;
 
-class Attack : StateManager
+class Attack : State
 {
-    private GameObject player;
-
-    public Attack(Mob mobGameObject, GameObject playerGameObject) : base(mobGameObject)
+    public Attack(Mob mobGameObject) : base(mobGameObject){}
+    new void OnEnterState()
     {
-        player = playerGameObject;
+        mob.mobTimer = 0;
     }
-    private float x, y, distance;
-
-    new void StateUpdate()
+    public void StateUpdate()
     {
-        x = (player.transform.position.x - mob.body.transform.position.x);
-        y = (player.transform.position.y - mob.body.transform.position.y);
-        distance = Mathf.Sqrt(Mathf.Pow(x, 2) + Mathf.Pow(y, 2));
-
-        if (distance < mob.zombieViewRange)
+        Debug.Log("Attack");
+        if (distance < mob.mobViewRange)
         {
-            mob.body.transform.Translate(x / distance * mob.zombieSpeed, y / distance * mob.zombieSpeed, 0);
+            mob.body.transform.Translate(x / distance * mob.mobSpeed, y / distance * mob.mobSpeed, 0);
         }
     }
 }
