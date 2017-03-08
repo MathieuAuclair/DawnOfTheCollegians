@@ -17,8 +17,6 @@ public class Player : MonoBehaviour {
     private Rigidbody2D rb;
     private Vector3 target;
     public Text txtGameOver;
-    
-
 
 
     void Start()
@@ -93,12 +91,14 @@ public class Player : MonoBehaviour {
         bool findSpot = false;
         while(!findSpot && i < this.inventory.Length )
         {
+            //search for an empty space in the inventory
             if (this.inventory[i] == null)
             {
                 findSpot = true;
                 this.inventory[i] = newItem;
                 Debug.Log(newItem.GetName());
-               
+                // if a weapon is found, check if the player have one already equip
+                // if not, places it at the main 
                 if(  this.inventory[i] is Weapon)
                 {
                     if (this.activeWeapon == null)

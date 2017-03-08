@@ -21,9 +21,5 @@ public class zombieAI_1 : MonoBehaviour {
         {
             this.transform.Translate(x/distance*zombieSpeed,y/distance*zombieSpeed,0);
         }
-    }
-
-
-
-    
+    } 
 }
