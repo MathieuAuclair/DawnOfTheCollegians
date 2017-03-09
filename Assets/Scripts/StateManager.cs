@@ -6,6 +6,7 @@
  */
 using UnityEngine;
 
+// Analysis disable once CheckNamespace
 public abstract class State
 {
     public float distance;
@@ -17,10 +18,9 @@ public abstract class State
         mob = mobGameObject;
     }
 
-    protected void StateUpdate()
+	public virtual void StateUpdate()
     {
         //update for every state
-        Debug.Log("No assign");
     }
 
     public void CheckChanges() // called with the update
@@ -42,17 +42,16 @@ public abstract class State
                 mob.currentState = 0;        //
             mob.stateList[mob.oldState].OnEnterState();                // init state, and then change it
             mob.stateList[mob.oldState].OnExitState(mob.currentState); //
-
         }
     }
-    public void OnEnterState() //init every shared value 
+	public virtual void OnEnterState() //init every shared value 
     {
         x = 0;
         y = 0;
         distance = 0;
         mob.mobTimer = 0;
     }
-    public void OnExitState(int stateId) // change the state
+	public virtual void OnExitState(int stateId) // change the state
     {
         mob.currentState = stateId;
     }

@@ -8,9 +8,9 @@ class Idle : State
 {
     public Idle(Mob mobObject) : base(mobObject) {}
 
-    public void StateUpdate()
+	public override void StateUpdate()
     {
-        Debug.Log("Idle");
+        
     }
 }
 

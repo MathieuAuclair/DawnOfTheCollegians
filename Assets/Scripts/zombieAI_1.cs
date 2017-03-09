@@ -32,28 +32,30 @@ public class zombieAI_1 : MonoBehaviour {
 }
 
 public class Mob {
-    public Mob(GameObject mobGameObject, GameObject playerGameObject, float speed, float range, float timer)
-    {
-        mobStateTime = timer; //time between every state
-        mobSpeed = speed;            
-        mobViewRange = range;
-        body = mobGameObject;
-        player = playerGameObject;
-        stateList[0] = new Idle(this);           // Add state to the mob  
-        stateList[1] = new Move(this);           //
-        stateList[2] = new Attack(this);         //
-    }
-
     public State[] stateList = new State[3];
     public GameObject player, body;    // gameObject used
     public int currentState;          // just an index pointer
     public int oldState;             // container
     public float mobSpeed, mobViewRange, mobTimer, mobStateTime;
 
+	public Mob(GameObject mobGameObject, GameObject playerGameObject, float speed, float range, float timer)
+	{
+		mobStateTime = timer; //time between every state
+		mobSpeed = speed;            
+		mobViewRange = range;
+		body = mobGameObject;
+		player = playerGameObject;
+		currentState = 1;
+		stateList[0] = new Idle(this);           // Add state to the mob  
+		stateList[1] = new Move(this);           //
+		stateList[2] = new Attack(this);         //
+	}
+
     public void MobUpdate()
     {
         stateList[currentState].CheckChanges(); //check for stateChanges
-        stateList[currentState].StateUpdate(); //do the update for state
+		stateList[currentState].StateUpdate(); //do the update for state
+	//	Debug.Log(currentState);
         mobTimer += Time.deltaTime;           //add time
     }
 }
