@@ -107,7 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 100
+  canBeHit: 1
   speed: 2
+  txtGameOver: {fileID: 0}
 --- !u!1 &985668639
 GameObject:
   m_ObjectHideFlags: 0

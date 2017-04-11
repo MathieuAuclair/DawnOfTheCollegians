@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
-
+    Animator animations;
     const  int MaxHitPoint = 10;
 
     public int hitPoint = MaxHitPoint;
@@ -23,7 +23,8 @@ public class Player : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody2D>();
         target = transform.position;
-        txtGameOver = GameObject.Find("Text").GetComponent<Text>();
+        //txtGameOver = GameObject.Find("Text").GetComponent<Text>();
+        animations = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,6 +49,18 @@ public class Player : MonoBehaviour {
     */
 
 
+    }
+    void Update()
+    {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        if (h != 0 || v != 0)
+        {
+            animations.SetBool("ismoving", true);
+        }
+        else
+            animations.SetBool("ismoving", false);
+        Debug.Log(h + " " + v);
     }
     /* Third script movement with OnClick command, need to configure the speed parametre. You dont NEED RB2D.
     void Update()
