@@ -33,9 +33,9 @@ If you want to support our project just email me or @Vinc33!
 * assign jobs to the artists and programmers
 
 #### DONE
-~~ create an intro scene (MathieuAuclair) ~~
-~~ clean up the project (MathieuAuclair) ~~
-~~ create a better readme (MathieuAuclair) ~~
+~~create an intro scene (MathieuAuclair)~~
+~~clean up the project (MathieuAuclair)~~
+~~create a better readme (MathieuAuclair)~~
 
 
 
