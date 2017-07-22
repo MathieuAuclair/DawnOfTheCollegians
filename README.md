@@ -34,7 +34,9 @@ If you want to support our project just email me or @Vinc33!
 
 #### DONE
 ~~create an intro scene (MathieuAuclair)~~
+
 ~~clean up the project (MathieuAuclair)~~
+
 ~~create a better readme (MathieuAuclair)~~
 
 
