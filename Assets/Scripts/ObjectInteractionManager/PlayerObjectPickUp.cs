@@ -12,7 +12,7 @@ using UnityEngine;
 public class PlayerObjectPickUp : MonoBehaviour {
 	InteractionObjectFunction interaction;
 	void Update () {
-		if (Input.GetButton ("Fire1")) {
+		if (Input.GetButton ("Fire1") && this.GetComponent<PlayerObjectInteraction> ().InProximityObject.Count > 0) {
 			Debug.Log ("weapon is being picked up!");
 			GameObject PickUpObject = this.GetComponent<PlayerObjectInteraction> ().InProximityObject[0];
 			interaction = PickUpObject.GetComponent<ObjectPropreties> ().ObjectType.UseObject;
