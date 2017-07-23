@@ -8,6 +8,7 @@ If you want to support our project just email me or @Vinc33!
 ### TODO
 
 #### PROGRAMMER
+* create a lot of editor tools for artist and gamedevel
 * make the game compatible with airconsole
 * make a pathfinding script
 * create a zombie script that can focus on multiple human
@@ -43,4 +44,6 @@ If you want to support our project just email me or @Vinc33!
 * https://help.github.com/articles/basic-writing-and-formatting-syntax/
 * https://www.youtube.com/watch?v=mxy9HdNM-is
 * https://www.airconsole.com/
-
+* https://unity3d.com/learn/tutorials/topics/interface-essentials/unity-editor-extensions-menu-items?playlist=17117
+* https://unity3d.com/learn/tutorials/s/scripting
+* https://www.youtube.com/watch?v=L24GKk1qQD4
