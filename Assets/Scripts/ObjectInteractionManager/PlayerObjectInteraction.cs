@@ -14,6 +14,7 @@ public delegate void InteractionObjectFunction();
 
 public class PlayerObjectInteraction : MonoBehaviour {
 	public InteractionObjectFunction useObject;
+	public GameObject currentGameObject;
 
 	//this list avoid using 2 object at the same time
 	public List<GameObject> InProximityObject = new List<GameObject>();

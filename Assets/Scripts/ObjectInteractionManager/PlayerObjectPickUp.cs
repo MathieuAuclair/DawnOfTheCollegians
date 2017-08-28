@@ -9,14 +9,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerObjectPickUp : MonoBehaviour {
+public class PlayerObjectPickUp : MonoBehaviour { //need a lot of improvement!
 	InteractionObjectFunction interaction;
 	void Update () {
+		//check if some weapons are available
 		if (Input.GetButton ("Fire1") && this.GetComponent<PlayerObjectInteraction> ().InProximityObject.Count > 0) {
-			Debug.Log ("weapon is being picked up!");
-			GameObject PickUpObject = this.GetComponent<PlayerObjectInteraction> ().InProximityObject[0];
-			interaction = PickUpObject.GetComponent<ObjectPropreties> ().ObjectType.UseObject;
-			this.gameObject.GetComponent<PlayerObjectInteraction> ().useObject = interaction;
+			PlayerObjectInteraction playerObjectInteraction = this.gameObject.GetComponent<PlayerObjectInteraction> ();
+
+			//remove old weapon
+			if(playerObjectInteraction.currentGameObject != null)
+				playerObjectInteraction.currentGameObject.transform.parent = null;
+
+			//set weapon type
+			GameObject PickUpObject = playerObjectInteraction.InProximityObject[0];
+			interaction = PickUpObject.GetComponent<ObjectPropreties> ().ObjectType.UseObject; //get new object interaction function
+			playerObjectInteraction.useObject = interaction; //set new object interaction function
+
+
+			//set visual weapon
+			playerObjectInteraction.currentGameObject = PickUpObject;
+			PickUpObject.transform.position = this.transform.position - new Vector3(0,0.1f,0);
+			PickUpObject.transform.parent = this.transform;
 		}
 	}
 }
